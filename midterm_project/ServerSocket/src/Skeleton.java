@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Skeleton {
@@ -13,7 +14,7 @@ public class Skeleton {
 	
 	public Skeleton() {
 		// 여기도 동적으로 만들어야함 
-		// 재사용 가능하게, 지금은 CLogin용도로만 사용이 가능함 
+		// 재사용 가능하게, 지금은 CLogin용도로만 사용이 가능함		
 		this.port = 12345;
 		this.objectMap = new HashMap<String, Object>();
 		this.objectMap.put("cLogin", new CLogin()); 
@@ -56,26 +57,27 @@ public class Skeleton {
 				String objectName = reader.readLine();
 				String methodName = reader.readLine();
 				String args = reader.readLine();
-			    writer.println("서버에서 보낸 응답 : " + objectName + methodName + args);
-	
+			    writer.println(objectName + methodName + args);
+			    
 			    Object object = this.objectMap.get(objectName);
-			    String result = (String)object.getClass().getMethod("").invoke(object); 
-			    // parameter는 아직 못함 String Array로 날리기 
+			    ArrayList<String> result = (ArrayList<String>)object.getClass().getMethod(methodName).invoke(object); 
+			    // parameter는 아직 못함 String Array로 날리기  d
+			    
 			    writer.println(result);
+			    
+			    
 			    clientSocket.close();
 	            System.out.println("클라이언트와 연결이 끊어졌습니다 : " + clientSocket.getInetAddress());
 	            System.out.println("-----------------------------------------------------------------------");
 	            
 	            // 여기서 sleep을 20초 걸고 
 	            // 2~3번 돌려보면 thread가 생성되었는지 알 수 있음
-	            // 실행되면 thread가 만들어진 것 
-	            
+	            // 실행되면 thread가 만들어진 것 	
 			} catch (IllegalAccessException | IllegalArgumentException 
 					| InvocationTargetException
 					| NoSuchMethodException | SecurityException | IOException e) {
 					e.printStackTrace();
-			}
-			
+			}			
 		}
 	} 
 }

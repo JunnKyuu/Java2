@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class View {
 	private ICLogin cLogin;
@@ -7,8 +8,14 @@ public class View {
 	}
 	
 	public void showUserInfo() {
-		String userInfo = this.cLogin.getUserInfo();
-		System.out.println(userInfo);
-		// userInfo 받아옴 
+		ArrayList<String> userInfo = this.cLogin.getUserInfo();		
+		if(userInfo.isEmpty()) {
+			System.out.println("***Data is empty***");
+		} else {
+			System.out.println("***Data from Mysql***\n");
+			for (String data : userInfo) {
+	            System.out.println(data);
+	        }
+		}
 	}
 }
