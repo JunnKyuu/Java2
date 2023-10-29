@@ -1,5 +1,5 @@
-import java.util.ArrayList;
+import java.sql.SQLException;
 
 public interface ICLogin {
-	public ArrayList<String> getUserInfo();
+	public void login(String args) throws SQLException;
 }

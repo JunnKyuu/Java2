@@ -1,5 +1,4 @@
-import java.util.ArrayList;
 
 public interface ICLogin {
-	public ArrayList<String> getUserInfo();
+	public void login(String userId, String password);
 }

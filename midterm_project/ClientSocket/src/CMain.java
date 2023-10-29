@@ -2,7 +2,7 @@ public class CMain {
 	
 	private void run() {
 		View view = new View();
-		view.showUserInfo();
+		view.login();
 	}
 	
 	public static void main(String[] args) {

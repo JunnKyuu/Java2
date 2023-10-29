@@ -1,21 +1,18 @@
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class View {
 	private ICLogin cLogin;
 	
-	public View() {
-		this.cLogin = new CLogin();
-	}
+	public View() { this.cLogin = new CLogin(); }
 	
-	public void showUserInfo() {
-		ArrayList<String> userInfo = this.cLogin.getUserInfo();		
-		if(userInfo.isEmpty()) {
-			System.out.println("***Data is empty***");
-		} else {
-			System.out.println("***Data from Mysql***\n");
-			for (String data : userInfo) {
-	            System.out.println(data);
-	        }
-		}
+	public void login() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("--------------- LOGIN ---------------\n");
+		System.out.print("학번: ");
+        String userId = scanner.nextLine();
+        System.out.print("비밀번호: ");
+        String password = scanner.nextLine();
+        
+		cLogin.login(userId, password);
 	}
 }
