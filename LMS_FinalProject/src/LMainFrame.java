@@ -13,12 +13,9 @@ public class LMainFrame extends JFrame {
 		this.setVisible(true);
 		this.setSize(600, 1200);
 		
-		
-		
 		// add components
 		this.menuBar = new LMenuBar();
 		this.add(this.menuBar, BorderLayout.NORTH);
-
 
 		this.mainPanel = new LMainPanel();
 		this.add(this.mainPanel, BorderLayout.CENTER);
