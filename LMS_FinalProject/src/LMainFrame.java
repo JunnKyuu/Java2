@@ -11,7 +11,7 @@ public class LMainFrame extends JFrame {
 	public LMainFrame() {
 		// set attributes
 		this.setVisible(true);
-		this.setSize(600, 600);
+		this.setSize(600, 1200);
 		
 		
 		
