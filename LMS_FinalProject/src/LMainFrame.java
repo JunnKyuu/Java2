@@ -9,11 +9,11 @@ public class LMainFrame extends JFrame {
 	private LMainPanel mainPanel;
 	
 	public LMainFrame() {
-		// set attributes
+		// 속성 설정
 		this.setVisible(true);
-		this.setSize(600, 600);
+		this.setSize(1200, 600);
 		
-		// add components
+		// 컴포넌트 추가
 		this.menuBar = new LMenuBar();
 		this.add(this.menuBar, BorderLayout.NORTH);
 

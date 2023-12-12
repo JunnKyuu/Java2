@@ -8,7 +8,7 @@ public class LFileMenu extends JMenu {
 	private JMenuItem openItem;
 	
 	public LFileMenu() {
-		super("file");
+		super("수강신청");
 		
 		this.newItem = new JMenuItem("new");
 		this.add(this.newItem);

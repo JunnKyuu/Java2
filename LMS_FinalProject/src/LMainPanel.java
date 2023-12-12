@@ -4,52 +4,54 @@ import javax.swing.JPanel;
 public class LMainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	// 미리담기 패널, 수강신청 패널, 컨트롤 패널 2개(왼오른, 위아래)를 만들어야 한다. 
-	// 버튼은 위아래, 왼오른 
-	private LDirectory directory;
-	private LLRButtonPanel directoryToMiridamgi; // 미리담기로 보내는 버튼, 왼오른 버튼
-	private LTable miridamgi; // 미리담기와 수강신청은 같은 형식으로 만들어준다. 
-	private LUDButtonPanel miridamgiToSugangsincheong;
-	private LTable sugangsincheong;
+	private LDirectory directory; // 강좌를 찾을 디렉토리 
+	private LMiridamgiButtonPanel directoryToMiridamgi; // 디렉토리 <-> 미리담기 
+	private LTable miridamgi; // 미리담기 테이블 
+	private LSugangsincheongButtonPanel directoryToSugangsincheong; // 디렉토리 <-> 수강신청 
+	private LTable sugangsincheong; // 수강신청 테이블 
+	private LMiriToSugangButtonPanel miridamgiToSugangsincheong; // 미리담기 <-> 수강신청
 
 	public LMainPanel() {
-		// 아래와 같이 하나하나 만들어서 붙이면 된다.
-		// 트리, 패널 2개, 버튼들만 만들어서 붙이면 된다.
+		this.setLayout(null);
 		
 		this.directory = new LDirectory(); // 디렉토리 
+		this.directory.setBounds(55, 50, 400, 460);
 		this.add(this.directory);
 		
-		this.miridamgi = new LTable(); // 미리담기 패널 
-		this.add(this.miridamgi);
-		
-		this.directoryToMiridamgi = new LLRButtonPanel(); // 왼오른 버튼 패널
+		this.directoryToMiridamgi = new LMiridamgiButtonPanel(); // 디렉토리 <-> 미리담기 버튼 패널 
+		this.directoryToMiridamgi.setBounds(530, 85, 80, 75);
 		this.add(this.directoryToMiridamgi);
 		this.directoryToMiridamgi.associate(directory, miridamgi);
 		
-		this.sugangsincheong = new LTable();
+		this.miridamgi = new LTable();  // 미리담기 테이블 
+		this.miridamgi.setBounds(665, 50, 500, 150);
+		this.add(this.miridamgi);
+		
+		this.miridamgiToSugangsincheong = new LMiriToSugangButtonPanel(); // 미리담기 <-> 수강신청 버튼 패널 
+		this.miridamgiToSugangsincheong.setBounds(800, 260, 200, 40);
+		this.add(this.miridamgiToSugangsincheong);
+		this.miridamgiToSugangsincheong.associate(miridamgi, sugangsincheong);
+		
+		this.sugangsincheong = new LTable(); // 수강신청 테이블  
+		this.sugangsincheong.setBounds(665, 355, 500, 150);
 		this.add(this.sugangsincheong);
 		
-		this.miridamgiToSugangsincheong = new LUDButtonPanel();
-		this.add(this.miridamgiToSugangsincheong);
-		this.miridamgiToSugangsincheong.associate(sugangsincheong, miridamgi);
-		
-		
-		
-		
+		this.directoryToSugangsincheong = new LSugangsincheongButtonPanel(); // 디렉토리 <-> 수강신청 버튼 패널 
+		this.directoryToSugangsincheong.setBounds(530, 390, 80, 75);
+		this.add(this.directoryToSugangsincheong);
+		this.directoryToSugangsincheong.associate(directory, sugangsincheong);
 	}
 	
 	public void initialize() {
-		// 자식들의 association을 만들어야 한다. 
-		
 		this.directoryToMiridamgi.associate(this.directory, this.miridamgi); 
-		// 디렉토리에서 원하는 것을 선택하고 버튼을 클릭하면 미리담기 패널로 보내야하므로, 디렉토리, 미리담기 2개를 알아야 한다. 
-		// association은 initialize에서 한다. 
-		
+		this.miridamgiToSugangsincheong.associate(miridamgi, sugangsincheong);
+		this.directoryToSugangsincheong.associate(this.directory, this.sugangsincheong); 
 		
 		this.directory.initialize();
 		this.directoryToMiridamgi.initialize();
 		this.miridamgi.initialize();
 		this.miridamgiToSugangsincheong.initialize();
+		this.directoryToSugangsincheong.initialize();
 		this.sugangsincheong.initialize();
 	}
 }
