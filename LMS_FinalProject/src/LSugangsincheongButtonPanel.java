@@ -46,7 +46,6 @@ public class LSugangsincheongButtonPanel extends JPanel {
     }
 
     private void deleteLectures() {
-    	// 수강신청 삭제
     	this.table.clearSelectedLecture();
     }
 
