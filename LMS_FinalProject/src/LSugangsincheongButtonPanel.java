@@ -9,7 +9,6 @@ public class LSugangsincheongButtonPanel extends JPanel {
 
     private JButton toRightButton;
     private JButton toLeftButton;
-
     private LDirectory directory;
     private LTable table;
 
